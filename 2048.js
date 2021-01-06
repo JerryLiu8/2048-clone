@@ -211,6 +211,12 @@ function gameOver() {
         if(readNum(i) == readNum(i+4))
             return;
     }
-    document.getElementById("results").innerHTML = ("You lose!")
-    document.removeEventListener('keyup',control)
+    var zeros = 0
+    for(var i=1;i<=16;i++) {
+        if(readNum(i) == '0') zeros++;
+    }
+    if(zeros === 0) {
+        document.getElementById("results").innerHTML = ("You lose!")
+        document.removeEventListener('keyup',control)
+    }
 }
