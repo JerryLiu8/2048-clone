@@ -81,3 +81,9 @@ footer {
     color: #F7DC6F;
     margin: auto;
 }
+
+.header{
+    font-size: 30px;
+    margin: auto;
+    text-align: center;
+}
