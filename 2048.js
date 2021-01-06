@@ -178,12 +178,39 @@ function checkWin() {
     }
 }
 function gameOver() {
-    var zeros = 0
-    for(var i=1;i<=16;i++) {
-        if(readNum(i) == '0') zeros++;
+    for(var i=1;i<=3;i++) {
+        if(readNum(i) == readNum(i+1))
+            return;
     }
-    if(zeros === 0) {
-        document.getElementById("results").innerHTML = ("You lose!")
-        document.removeEventListener('keyup',control)
+    for(var i=5;i<=7;i++) {
+        if(readNum(i) == readNum(i+1))
+            return;
     }
+    for(var i=9;i<=11;i++) {
+        if(readNum(i) == readNum(i+1))
+            return;
+    }
+    for(var i=13;i<=15;i++) {
+        if(readNum(i) == readNum(i+1))
+            return;
+    }
+
+    for(var i=1;i<=9;i+=4) {
+        if(readNum(i) == readNum(i+4))
+            return;
+    }
+    for(var i=2;i<=10;i+=4) {
+        if(readNum(i) == readNum(i+4))
+            return;
+    }
+    for(var i=3;i<=11;i+=4) {
+        if(readNum(i) == readNum(i+4))
+            return;
+    }
+    for(var i=4;i<=12;i+=4) {
+        if(readNum(i) == readNum(i+4))
+            return;
+    }
+    document.getElementById("results").innerHTML = ("You lose!")
+    document.removeEventListener('keyup',control)
 }
