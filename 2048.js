@@ -1,4 +1,6 @@
 var score = 0;
+var prevState = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0",];
+var currState = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0",];
 function random2(){
     var id = Math.floor(Math.random() * 16) + 1;
     if(document.getElementById(id).innerHTML.length == 0) {
@@ -148,27 +150,80 @@ function keyRight() {
     moveRight();
     combineRow();
     moveRight();
-    random2();
+    updateCurrState();
+    if(hasChangeOccurred()) {
+        random2();
+        updateCurrState();
+    }
+    updatePrevState();
 }
 function keyLeft() {
     moveLeft();
     combineRow();
     moveLeft();
-    random2();
+    updateCurrState();
+    if(hasChangeOccurred()) {
+        random2();
+        updateCurrState();
+    }
+    updatePrevState();
 }
 function keyDown() {
     moveDown();
     combineColumn();
     moveDown();
-    random2();
+    updateCurrState();
+    if(hasChangeOccurred()) {
+        random2();
+        updateCurrState();
+    }
+    updatePrevState();
 }
 function keyUp() {
     moveUp();
     combineColumn();
     moveUp();
-    random2();
+    updateCurrState();
+    if(hasChangeOccurred()) {
+        random2();
+        updateCurrState();
+    }
+    updatePrevState();
 }
 
+function updateCurrState() {
+    for(var i=0;i<16;i++) {
+        currState[i] = readNum(i+1);
+    }
+}
+
+function updatePrevState() {
+    for(var i=0;i<16;i++) {
+        prevState[i] = currState[i];
+    }
+}
+
+function hasChangeOccurred() {
+    logStates();
+    for(var i=0;i<16;i++) {
+        if(currState[i] != prevState[i]) return true;
+    }
+    return false;
+}
+
+function logStates() {
+    var str = ""
+    for(var i=0;i<16;i++) {
+        str += currState[i] + ", "
+    }
+    console.log(str);
+    str = ""
+    for(var i=0;i<16;i++) {
+        str += prevState[i] + ", "
+    }
+    console.log(str)
+    console.log("\n")
+}
 function checkWin() {
     for(var i=1;i<=16;i++) {
         if(readNum(i) === '2048') {
