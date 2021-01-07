@@ -106,11 +106,11 @@ function moveUp() {
     }
 }
 function combineRow() {
-    for(var i=1;i < 16;i++) {
-        if(readNum(i) === readNum(i+1)) {
-            var combined = parseInt(readNum(i)) + parseInt(readNum(i+1));
+    for(var i=16;i > 1;i--) {
+        if(readNum(i-1) === readNum(i)) {
+            var combined = parseInt(readNum(i-1)) + parseInt(readNum(i));
             writeNum(i, combined);
-            writeNum(i+1, 0);
+            writeNum(i-1, 0);
             score += combined;
             document.getElementById("score").innerHTML = "Score: " + score;
         }
@@ -118,11 +118,11 @@ function combineRow() {
     checkWin();
 }
 function combineColumn() {
-    for(var i=1;i < 13;i++) {
-        if(readNum(i) === readNum(i+4)) {
-            var combined = parseInt(readNum(i)) + parseInt(readNum(i+4));
+    for(var i=16;i > 4;i--) {
+        if(readNum(i) === readNum(i-4)) {
+            var combined = parseInt(readNum(i)) + parseInt(readNum(i-4));
             writeNum(i, combined);
-            writeNum(i+4, 0);
+            writeNum(i-4, 0);
             score += combined;
             document.getElementById("score").innerHTML = "Score: " + score;
         }
