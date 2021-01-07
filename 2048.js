@@ -105,7 +105,7 @@ function moveUp() {
         writeNum(i+12, newColumn[3]);
     }
 }
-function combineRow() {
+function combineRowRight() {
     for(var i=16;i > 1;i--) {
         if(readNum(i-1) === readNum(i)) {
             var combined = parseInt(readNum(i-1)) + parseInt(readNum(i));
@@ -117,7 +117,7 @@ function combineRow() {
     }
     checkWin();
 }
-function combineColumn() {
+function combineColumnDown() {
     for(var i=16;i > 4;i--) {
         if(readNum(i) === readNum(i-4)) {
             var combined = parseInt(readNum(i)) + parseInt(readNum(i-4));
@@ -129,7 +129,30 @@ function combineColumn() {
     }
     checkWin();
 }
-
+function combineRowLeft() {
+    for(var i=1;i < 16;i++) {
+        if(readNum(i) === readNum(i+1)) {
+            var combined = parseInt(readNum(i)) + parseInt(readNum(i+1));
+            writeNum(i, combined);
+            writeNum(i+1, 0);
+            score += combined;
+            document.getElementById("score").innerHTML = "Score: " + score;
+        }
+    }
+    checkWin();
+}
+function combineColumnUp() {
+    for(var i=1;i < 13;i++) {
+        if(readNum(i) === readNum(i+4)) {
+            var combined = parseInt(readNum(i)) + parseInt(readNum(i+4));
+            writeNum(i, combined);
+            writeNum(i+4, 0);
+            score += combined;
+            document.getElementById("score").innerHTML = "Score: " + score;
+        }
+    }
+    checkWin();
+}
 function control(e) {
     if(e.keyCode === 37) {
         keyLeft();
@@ -148,7 +171,7 @@ document.addEventListener('keyup', control)
 
 function keyRight() {
     moveRight();
-    combineRow();
+    combineRowRight();
     moveRight();
     updateCurrState();
     if(hasChangeOccurred()) {
@@ -159,7 +182,7 @@ function keyRight() {
 }
 function keyLeft() {
     moveLeft();
-    combineRow();
+    combineRowLeft();
     moveLeft();
     updateCurrState();
     if(hasChangeOccurred()) {
@@ -170,7 +193,7 @@ function keyLeft() {
 }
 function keyDown() {
     moveDown();
-    combineColumn();
+    combineColumnDown();
     moveDown();
     updateCurrState();
     if(hasChangeOccurred()) {
@@ -181,7 +204,7 @@ function keyDown() {
 }
 function keyUp() {
     moveUp();
-    combineColumn();
+    combineColumnUp();
     moveUp();
     updateCurrState();
     if(hasChangeOccurred()) {
