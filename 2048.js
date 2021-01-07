@@ -107,7 +107,7 @@ function moveUp() {
 }
 function combineRowRight() {
     for(var i=16;i > 1;i--) {
-        if(readNum(i-1) === readNum(i)) {
+        if(readNum(i-1) === readNum(i) && Math.floor((i-1)/4) === Math.floor((i-2)/4)) {
             var combined = parseInt(readNum(i-1)) + parseInt(readNum(i));
             writeNum(i, combined);
             writeNum(i-1, 0);
