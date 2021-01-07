@@ -131,7 +131,7 @@ function combineColumnDown() {
 }
 function combineRowLeft() {
     for(var i=1;i < 16;i++) {
-        if(readNum(i) === readNum(i+1)) {
+        if(readNum(i) === readNum(i+1) && Math.floor(i/4) === Math.floor((i-1)/4)) {
             var combined = parseInt(readNum(i)) + parseInt(readNum(i+1));
             writeNum(i, combined);
             writeNum(i+1, 0);
