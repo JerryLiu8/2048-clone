@@ -23,6 +23,8 @@ function newGame() {
     currState = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0",];
     document.addEventListener('keyup', control)
     document.getElementById("results").innerHTML = ("")
+    score = 0;
+    document.getElementById("score").innerHTML = "Score: " + score;
     initialize();
 }
 function readNum(i) {
