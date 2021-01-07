@@ -32,6 +32,20 @@ footer {
   height: 100px;
 }
 
+.button {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #F7DC6F;
+  border-radius: 12px;
+  font-size: 30px;
+  color: white;
+  border: 2px solid #F4D03F;
+}
+
 .n2 {
     background-color: #FDF2E9;
     &:before{

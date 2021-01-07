@@ -14,6 +14,17 @@ function initialize() {
     random2();
     random2();
 }
+function newGame() {
+    for(var i = 1;i <= 16;i++) {
+        document.getElementById(i).innerHTML = null;
+        document.getElementById("b"+i).className = "";
+    }
+    prevState = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0",];
+    currState = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0",];
+    document.addEventListener('keyup', control)
+    document.getElementById("results").innerHTML = ("")
+    initialize();
+}
 function readNum(i) {
     if(document.getElementById(i).innerHTML.length == 0) return "0";
     else return document.getElementById(i).innerHTML;
